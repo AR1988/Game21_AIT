@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * @author Andrej Reutow
@@ -34,7 +33,7 @@ public class Player {
         Card[] copy = Arrays.copyOf(this.hand, this.hand.length + 1);
         copy[copy.length - 1] = card;
         this.hand = copy;
-
+        Arrays.sort(copy);
         this.score += card.getVALUE();
     }
 

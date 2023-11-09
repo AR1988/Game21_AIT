@@ -4,7 +4,7 @@ import java.util.Objects;
  * @author Andrej Reutow
  * created on 08.11.2023
  */
-public class Card {
+public class Card implements Comparable<Card> {
     /**
      * Значение карты от 1 до 10.
      */
@@ -51,5 +51,11 @@ public class Card {
     @Override
     public String toString() {
         return SUIT + " " + VALUE;
+    }
+
+    @Override
+    public int compareTo(Card other) {
+        int suitCompare = this.SUIT.compareTo(other.getSUIT());
+        return suitCompare != 0 ? suitCompare : Integer.compare(this.VALUE, other.getVALUE());
     }
 }
