@@ -14,9 +14,9 @@ public class Player {
     private Card[] hand;
 
     /**
-     * сумарное значение карт в руках игрока
+     * сумарное значение карт в руках игрока за текущий раунд
      */
-    private int score; // 0
+    private int roundScore; // 0
     /**
      * Общий счет за всю игру/ количество побед
      */
@@ -34,17 +34,40 @@ public class Player {
         copy[copy.length - 1] = card;
         this.hand = copy;
         Arrays.sort(copy);
-        this.score += card.getVALUE();
+        this.roundScore += card.getVALUE();
     }
 
     // Метод resetRound() для сброса руки и счета за раунд.
     public void resetRound() {
-        this.score = 0;
+        this.roundScore = 0;
         this.hand = new Card[0];
     }
 
     // Метод addPointToTotalScore() для добавления балла к общему счету.
     public void addPointToTotalScore() {
         this.totalScore++;
+    }
+
+    public void displayHandCards() {
+        System.out.println("#".repeat(20));
+        System.out.println("Карты игрока:");
+
+        for (Card card : hand) {
+            System.out.println(card);
+        }
+
+        System.out.println("#".repeat(20));
+    }
+
+    public String getName() {
+        return NAME;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public int getRoundScore() {
+        return roundScore;
     }
 }
